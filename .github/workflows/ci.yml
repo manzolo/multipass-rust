@@ -1,0 +1,37 @@
+on:
+  push:
+  pull_request:
+    branches: [main]
+env:
+  SLEEP_BEFORE_START: 30
+  SLEEP_RETRY: 10
+  RETRY_COMMAND: 60
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install project dependencies
+        shell: bash
+        run: |
+          brew update
+          brew install --cask multipass
+          hash -r
+      - name: Wait for multipass to be up
+        shell: bash
+        run: |
+          until multipass list; do
+            echo 'multipass is not running, will check again in 5 seconds'
+            sleep 5
+          done
+      - name: Download source
+        uses: actions/checkout@v2
+      - name: Create ENV
+        run: cp env.dist env
+      - name: Setup VM
+        run: ./setup.sh
+      - name: Test VM
+        run: ./test.sh
+      - name: Destroy VM
+        run: ./uninstall.sh
