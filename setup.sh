@@ -56,3 +56,4 @@ ${HOST_DIR_NAME}/start.sh -v
 msg_info "[Task 3]"
 msg_warn "On task complete"
 
+multipass info "$VM_NAME"
