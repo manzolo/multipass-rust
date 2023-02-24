@@ -1,5 +1,4 @@
-# Multipass demo
-# multipass-template
+# Multipass RUST
 ## Install VM
 ### Set parameters:
 ```
@@ -17,3 +16,9 @@ nano env
 ```
 ./uninstall.sh
 ```
+
+## Example
+
+![immagine](https://user-images.githubusercontent.com/7722346/221297183-b6cf5b55-d6cb-4f90-9bc2-f83b4c7b8011.png)
+
+![immagine](https://user-images.githubusercontent.com/7722346/221297318-34855f21-c078-473c-9159-334b409072ef.png)
